@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bitbucket pull requests overview extension settings</title>
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="options.js"></script>
+  </head>
+  <body>
+
+  <div class="flash"></div>
+  <form id="options">
+      Bitbucket API url : <input id="bitbucket-api-url" type="text" size="56"/> <br/>
+      Max number of pull requests supported in overview page : <input id="max-pull-requests-count" type="number" size="5"/> (Make sure to not exceed the valid value - e.g. 100 is too much) <br/>
+      <br />
+      <input type="submit" name="submit" value="Save settings"/>
+  </form>
+  </body>
+</html>

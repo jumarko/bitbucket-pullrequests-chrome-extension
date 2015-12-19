@@ -1,0 +1,28 @@
+{
+    "name": "Bitbucket pull requests overview extension",
+    "version": "0.1",
+    "homepage_url": "https://github.com/jumarko/bitbucket-pullrequests-chrome-extension",
+    "manifest_version": 2,
+    "description": "Extends the capabilities of default bitbucket repository pull requests overview. It adds the list of reviewers.",
+    "options_page": "options.html",
+    "browser_action": {
+        "default_title": "Bitbucket pull requests overview extension",
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["jquery-2.1.4.min.js", "background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://bitbucket.org/*/*/pull-requests/"],
+            "js": ["jquery-2.1.4.min.js",  "pull_requests.js"]
+        }
+    ],
+    "permissions": [
+        "https://bitbucket.org/*"
+    ],
+    "web_accessible_resources": [
+        "jassert/img/*.png"
+    ]
+}
