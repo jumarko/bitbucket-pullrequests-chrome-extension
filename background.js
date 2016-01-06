@@ -15,7 +15,8 @@ function onRequest(request, sender, response) {
         case 'get_options' :
             response({
                          "bitbucketApiUrl": localStorage['bitbucket-api-url'],
-                         "maxPullRequestsCount": localStorage['max-pull-requests-count']
+                         "maxPullRequestsCount": localStorage['max-pull-requests-count'],
+                         "bitbucketName": localStorage['bitbucket-name']
                      });
             break;
     }
