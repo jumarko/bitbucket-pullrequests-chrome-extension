@@ -22,9 +22,10 @@ $(document).ready(function () {
         maxPullRequestsCountField.attr('value', localStorage['max-pull-requests-count']);
     }
 
-    function saveOptions(bitbucketApiUrl, maxPullRequestsCount) {
+    function saveOptions(bitbucketApiUrl, maxPullRequestsCount, bitbucketName) {
         localStorage['bitbucket-api-url'] = bitbucketApiUrl;
         localStorage['max-pull-requests-count'] = maxPullRequestsCount;
+        localStorage['bitbucket-name'] = bitbucketName;
     }
 
     function getApiUrl() {
@@ -35,12 +36,16 @@ $(document).ready(function () {
         return $("#max-pull-requests-count").val();
     }
 
+    function getBitbucketName() {
+        return $("#bitbucket-name").val();
+    }
+
     var flash = $('.flash');
     flash.hide();
     loadOptions();
     $("form#options").submit(function () {
         if (getApiUrl() && getMaxPullRequestsCount() > 0) {
-            saveOptions(getApiUrl(), getMaxPullRequestsCount());
+            saveOptions(getApiUrl(), getMaxPullRequestsCount(), getBitbucketName());
             flash.html('<i>Settings saved.</i>');
             flash.show();
         } else {

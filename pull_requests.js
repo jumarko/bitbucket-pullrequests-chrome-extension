@@ -1,9 +1,9 @@
 $(document).ready(function () {
     chrome.extension.sendRequest({ action: 'get_options'}, function (result) {
-        loadReviewers(result.bitbucketApiUrl, result.maxPullRequestsCount);
+        loadReviewers(result.bitbucketApiUrl, result.maxPullRequestsCount, result.bitbucketName);
     });
 
-    function loadReviewers(bitbucketApiUrl, maxPullRequestsCount) {
+    function loadReviewers(bitbucketApiUrl, maxPullRequestsCount, bitbucketName) {
 
         checkArguments();
 
@@ -115,7 +115,7 @@ $(document).ready(function () {
             var reviewersColumn = document.createElement('td');
             // the same css class as user
             reviewersColumn.className = 'user';
-            reviewersColumn.textContent = reviewersNames.join(", ");
+            reviewersColumn.innerHTML = reviewersNames.join(", ").replace(bitbucketName, "<span style='background-color: yellow'> " + bitbucketName + "</span>");
 
             // insert reviewers column as the second one, just after the author
             pullRequestItemElement.insertBefore(reviewersColumn,
